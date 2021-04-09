@@ -1,89 +1,136 @@
-const Todo = require('../models').Todo;
-const TodoItem = require('../models').TodoItem;
+const Todo = require("../models").Todo;
+const TodoItem = require("../models").TodoItem;
 
 module.exports = {
-  create(req, res) {
-    return Todo
-      .create({
-        title: req.body.title,
-      })
-      .then((todo) => res.status(201).send(todo))
-      .catch((error) => res.status(400).send(error));
+  async create(req, res) {
+    try {
+      const userId = req.user.id;
+      const title = req.body.title;
+
+      const todo = await Todo.create({
+        title,
+        userId,
+      });
+
+      return res.status(201).send(todo);
+    } catch (err) {
+      return res.status(400).send({
+        success: false,
+        message: err.message,
+      });
+    }
   },
 
-  list(req, res) {
-    return Todo
-      .findAll({
-        include: [{
-          model: TodoItem,
-          as: 'todoItems',
-        }],
-        order: [
-          ['createdAt', 'DESC'],
-          [{ model: TodoItem, as: 'todoItems' }, 'createdAt', 'ASC'],
+  async list(req, res) {
+    try {
+      const userId = req.user.id;
+
+      const todos = await Todo.findAll({
+        where: {
+          userId,
+        },
+        include: [
+          {
+            model: TodoItem,
+            as: "todoItems",
+          },
         ],
-      })
-      .then((todos) => res.status(200).send(todos))
-      .catch((error) => res.status(400).send(error));
+        order: [
+          ["createdAt", "DESC"],
+          [{ model: TodoItem, as: "todoItems" }, "createdAt", "ASC"],
+        ],
+      });
+
+      return res.status(200).send(todos);
+    } catch (err) {
+      return res.status(400).send({
+        success: false,
+        message: err.message,
+      });
+    }
   },
 
-  retrieve(req, res) {
-    return Todo
-      .findByPk(req.params.todoId, {
-        include: [{
-          model: TodoItem,
-          as: 'todoItems',
-        }],
-      })
-      .then((todo) => {
-        if (!todo) {
-          return res.status(404).send({
-            message: 'Todo Not Found',
-          });
-        }
-        return res.status(200).send(todo);
-      })
-      .catch((error) => res.status(400).send(error));
+  async retrieve(req, res) {
+    try {
+      const userId = req.user.id;
+      const todoId = req.params.todoId;
+
+      const todo = await Todo.findByPk(todoId, {
+        include: [
+          {
+            model: TodoItem,
+            as: "todoItems",
+          },
+        ],
+      });
+
+      if (todo.userId !== userId) {
+        throw new Error("Unauthorized access to this todo list.");
+      }
+
+      return res.status(200).send(todo);
+    } catch (err) {
+      return res.status(400).send({
+        success: false,
+        message: err.message,
+      });
+    }
   },
 
-  update(req, res) {
-    return Todo
-      .findByPk(req.params.todoId, {
-        include: [{
-          model: TodoItem,
-          as: 'todoItems',
-        }],
-      })
-      .then(todo => {
-        if (!todo) {
-          return res.status(404).send({
-            message: 'Todo Not Found',
-          });
-        }
-        return todo
-          .update({
-            title: req.body.title || todo.title,
-          })
-          .then(() => res.status(200).send(todo))
-          .catch((error) => res.status(400).send(error));
-      })
-      .catch((error) => res.status(400).send(error));
+  async update(req, res) {
+    try {
+      const userId = req.user.id;
+      const todoId = req.params.todoId;
+      const todoTitle = req.body.title;
+
+      const todo = await Todo.findByPk(todoId, {
+        include: [
+          {
+            model: TodoItem,
+            as: "todoItems",
+          },
+        ],
+      });
+
+      if (todo.userId !== userId) {
+        throw new Error("Unauthorized access to this todo list.");
+      }
+
+      await todo.update({
+        title: todoTitle,
+      });
+
+      return res.status(200).send(todo);
+    } catch (err) {
+      return res.status(400).send({
+        success: false,
+        message: err.message,
+      });
+    }
   },
 
-  destroy(req, res) {
-    return Todo
-      .findByPk(req.params.todoId)
-      .then(todo => {
-        if (!todo) {
-          return res.status(400).send({
-            message: 'Todo Not Found',
-          });
-        }
-        return todo
-          .destroy()
-          .then(() => res.status(204).send())
-          .catch((error) => res.status(400).send(error));
-      })
-      .catch((error) => res.status(400).send(error));
+  async destroy(req, res) {
+    try {
+      const userId = req.user.id;
+      const todoId = req.params.todoId;
+
+      const todo = await Todo.findByPk(todoId);
+
+      if (!todo) {
+        throw new Error("Todo not found.");
+      }
+
+      if (todo.userId !== userId) {
+        throw new Error("Unauthorized access to this todo list.");
+      }
+
+      await todo.destroy();
+      return res.status(204).send();
+    } catch (err) {
+      return res.status(400).send({
+        success: false,
+        message: err.message,
+      });
+    }
   },
 };

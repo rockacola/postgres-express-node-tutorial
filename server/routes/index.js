@@ -27,11 +27,11 @@ module.exports = (app) => {
     })
   );
 
-  app.post("/api/todos", todosController.create);
-  app.get("/api/todos", todosController.list);
-  app.get("/api/todos/:todoId", todosController.retrieve);
-  app.put("/api/todos/:todoId", todosController.update);
-  app.delete("/api/todos/:todoId", todosController.destroy);
+  app.post("/api/todos", authenticateToken, todosController.create);
+  app.get("/api/todos", authenticateToken, todosController.list);
+  app.get("/api/todos/:todoId", authenticateToken, todosController.retrieve);
+  app.put("/api/todos/:todoId", authenticateToken, todosController.update);
+  app.delete("/api/todos/:todoId", authenticateToken, todosController.destroy);
 
   app.post("/api/todos/:todoId/items", todoItemsController.create);
   app.put("/api/todos/:todoId/items/:todoItemId", todoItemsController.update);
@@ -45,7 +45,7 @@ module.exports = (app) => {
     })
   );
 
-  app.get("/api/users", usersController.list);
+  app.get("/api/users", usersController.list); // TODO: remove this action
   app.post("/api/users", usersController.register);
   app.post("/api/users/login", usersController.login);
   app.get("/api/users/me", authenticateToken, usersController.me);
