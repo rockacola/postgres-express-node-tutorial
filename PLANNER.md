@@ -15,9 +15,5 @@
 
 ---
 
-* Get the project running as it is with my DB connection string
-* Add some test cases
-* Upgrade package dependencies
-* Create user table
 * Create user actions (login, register etc)
 * Update todo list implementations to belong to an user
