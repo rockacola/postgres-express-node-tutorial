@@ -43,4 +43,16 @@ describe("CRUD on user", () => {
 
     userToken = token;
   });
+
+  test("Get my user info", async () => {
+    const url = baseUrl + "/users/me";
+    const res = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${userToken}`
+      }
+    })
+    expect(res.status).toBe(200);
+    const user = res.data;
+    expect(user.id).toBe(userId);
+  });
 });

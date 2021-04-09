@@ -64,4 +64,17 @@ module.exports = {
       });
     }
   },
+
+  async me(req, res) {
+    try {
+      const userId = req.user.id;
+      const user = await User.findByPk(userId);
+      return res.status(200).send(user);
+    } catch (err) {
+      return res.status(400).send({
+        success: false,
+        message: err.message,
+      });
+    }
+  },
 };
