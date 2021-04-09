@@ -24,4 +24,5 @@ module.exports = (app) => {
 
   app.get('/api/users', usersController.list);
   app.post('/api/users', usersController.register);
+  app.post('/api/users/login', usersController.login);
 };
