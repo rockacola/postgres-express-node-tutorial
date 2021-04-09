@@ -37,7 +37,29 @@ describe("CRUD on todo list", () => {
     expect(todos.length).toBeGreaterThanOrEqual(todoListCount + 1);
   });
 
-  // TODO: mod an existing todo list
+  test("Modify an todo list", async () => {
+    const url = baseUrl + `/todos/${todoListId}`;
+    const payload = {
+      title: "Dummy todo list (mod)",
+    };
+    const res = await axios.put(url, payload);
+    expect(res.status).toBe(200);
+    const todo = res.data;
+    expect(todo.id).toBe(todoListId);
+    expect(todo.title).toBe(payload.title);
+  });
 
-  // TODO : delete a todo list
+  test("Delete an todo list", async () => {
+    const url = baseUrl + `/todos/${todoListId}`;
+    const res = await axios.delete(url);
+    expect(res.status).toBe(204);
+  });
+
+  test("Count todo list (again)", async () => {
+    const url = baseUrl + "/todos";
+    const res = await axios.get(url);
+    expect(res.status).toBe(200);
+    const todos = res.data;
+    expect(todos.length).toBeGreaterThanOrEqual(todoListCount);
+  });
 });
