@@ -1,9 +1,12 @@
 const User = require("../models").User;
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const dotenv = require('dotenv')
 
-const SALT_ROUNDS = 12; // TODO: move to env var
-const TOKEN_SECRET = "b76760dbd6c7e4a8304d25f7ed4c84b9"; // TODO: move to env var; generate better secret
+dotenv.config()
+
+const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS)
+const TOKEN_SECRET = process.env.TOKEN_SECRET
 
 module.exports = {
   list(req, res) {

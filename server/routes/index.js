@@ -2,8 +2,11 @@ const todosController = require("../controllers").todos;
 const todoItemsController = require("../controllers").todoItems;
 const usersController = require("../controllers/users");
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv')
 
-const TOKEN_SECRET = "b76760dbd6c7e4a8304d25f7ed4c84b9"; // TODO: move to env var; generate better secret
+dotenv.config()
+
+const TOKEN_SECRET = process.env.TOKEN_SECRET
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
