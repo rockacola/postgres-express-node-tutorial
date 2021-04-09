@@ -33,10 +33,10 @@ module.exports = (app) => {
   app.put("/api/todos/:todoId", authenticateToken, todosController.update);
   app.delete("/api/todos/:todoId", authenticateToken, todosController.destroy);
 
-  app.post("/api/todos/:todoId/items", todoItemsController.create);
-  app.put("/api/todos/:todoId/items/:todoItemId", todoItemsController.update);
+  app.post("/api/todos/:todoId/items", authenticateToken, todoItemsController.create);
+  app.put("/api/todos/:todoId/items/:todoItemId", authenticateToken, todoItemsController.update);
   app.delete(
-    "/api/todos/:todoId/items/:todoItemId",
+    "/api/todos/:todoId/items/:todoItemId", authenticateToken,
     todoItemsController.destroy
   );
   app.all("/api/todos/:todoId/items", (req, res) =>
