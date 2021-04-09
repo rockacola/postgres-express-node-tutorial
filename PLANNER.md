@@ -12,6 +12,7 @@
 * Guest to able to confirm registration with email verification
 * Guest to able to submit password reset
 * User able to change his password
+* Review error messages and what info to expore through API response
 
 ---
 
