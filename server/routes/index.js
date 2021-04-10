@@ -30,11 +30,20 @@ module.exports = (app) => {
     })
   );
 
+  // Todo list
+
   app.post("/api/todos", authenticateToken, todosController.create);
   app.get("/api/todos", authenticateToken, todosController.list);
   app.get("/api/todos/:todoId", authenticateToken, todosController.retrieve);
   app.put("/api/todos/:todoId", authenticateToken, todosController.update);
   app.delete("/api/todos/:todoId", authenticateToken, todosController.destroy);
+
+  // Todo list collaborators
+
+  app.post("/api/todos/:todoId/collaborators/:collaboratorsId", authenticateToken, todosController.setCollaborator);
+  app.delete("/api/todos/:todoId/collaborators/:collaboratorsId", authenticateToken, todosController.unsetCollaborator);
+
+  // Todo item
 
   app.post("/api/todos/:todoId/items", authenticateToken, todoItemsController.create);
   app.put("/api/todos/:todoId/items/:todoItemId", authenticateToken, todoItemsController.update);

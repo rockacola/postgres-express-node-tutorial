@@ -18,7 +18,7 @@ module.exports = {
       await Todo_User.create({
         todoId: todo.id,
         userId,
-      })
+      });
 
       return res.status(201).send(todo);
     } catch (err) {
@@ -141,6 +141,63 @@ module.exports = {
       }
 
       await todo.destroy();
+      return res.status(204).send();
+    } catch (err) {
+      return res.status(400).send({
+        success: false,
+        message: err.message,
+      });
+    }
+  },
+
+  async setCollaborator(req, res) {
+    try {
+      const ownerId = req.user.id;
+      const todoId = req.params.todoId;
+      const collaboratorsId = req.params.collaboratorsId;
+
+      // TODO: verify current user is the owner of the target todo ID
+      // TODO: verify correctness of the provided collaborator ID
+      // TODO: verify whether the target collaborator is already set to this todo list
+
+      // ACT
+      await Todo_User.create({
+        todoId,
+        userId: collaboratorsId,
+      });
+
+      return res.status(204).send();
+    } catch (err) {
+      return res.status(400).send({
+        success: false,
+        message: err.message,
+      });
+    }
+  },
+
+  async unsetCollaborator(req, res) {
+    try {
+      const ownerId = req.user.id;
+      const todoId = req.params.todoId;
+      const collaboratorsId = req.params.collaboratorsId;
+
+      // TODO: verify current user is the owner of the target todo ID
+      // TODO: verify correctness of the provided collaborator ID
+      // TODO: verify whether the target collaborator is already set to this todo list
+
+      const relation = await Todo_User.findOne({
+        where: {
+          todoId,
+          userId: collaboratorsId,
+        },
+      });
+      if (!relation) {
+        // TODO: review error message
+        throw new Error("Invalid request.");
+      }
+
+      // ACT
+      await relation.destroy();
       return res.status(204).send();
     } catch (err) {
       return res.status(400).send({

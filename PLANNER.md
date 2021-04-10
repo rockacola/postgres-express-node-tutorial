@@ -22,9 +22,6 @@
 
 ## Development action plans
 
-* Upon creation of a todo list, its owner auto become a collaborator
-* API end point for 'Todo list owner' to adding collaborator to a todo list
-* API end point for 'Todo list owner' to removing collaborator to a todo list
 * Update 'Todo Item' model to include assignee's user ID
 * API end point for 'Todo list owner' to adding assignee to a todo item
 * API end point for 'Todo list owner' to removing assignee to a todo item
