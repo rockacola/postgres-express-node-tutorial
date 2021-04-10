@@ -22,7 +22,6 @@
 
 ## Development action plans
 
-* Create a joining table between User and Todo to allow many-to-many relationship
 * Upon creation of a todo list, its owner auto become a collaborator
 * API end point for 'Todo list owner' to adding collaborator to a todo list
 * API end point for 'Todo list owner' to removing collaborator to a todo list

@@ -1,6 +1,7 @@
 const Todo = require("../models").Todo;
 const TodoItem = require("../models").TodoItem;
 const User = require("../models").User;
+const Todo_User = require("../models").Todo_User;
 
 module.exports = {
   async create(req, res) {
@@ -12,6 +13,12 @@ module.exports = {
         title,
         userId,
       });
+
+      // Associate myself as collaborator of this todo list
+      await Todo_User.create({
+        todoId: todo.id,
+        userId,
+      })
 
       return res.status(201).send(todo);
     } catch (err) {
