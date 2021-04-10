@@ -1,20 +1,44 @@
+# Technical Planner
+
+## Terminologies
+
+* Todo list owner
+* Todo list collaborator
+* Todo item assignee
+
+## Scope
+
+* An user can owns 0 to many todo list; a todo list can be owned by exactly 1 user.
+* Users can be invited to participate in a todo list, thus becomes a collaborator of the list.
+* Collaborators of the todo list can work on its items (tasks), where he shall be assign to it and be allowed to change the status of the todo item.
+
 ## Use Cases
 
-* Guest able to register
-* Guest able to login with his credentials to become an User
-* User able to create a todo list
-* User able to rename his todo list
-* User able to delete his todo list
-* User able to add/modify/delete an item in his todo list
-
-## Nice to haves
-
-* Guest to able to confirm registration with email verification
-* Guest to able to submit password reset
-* User able to change his password
-* Review error messages and what info to expore through API response
+* 'Todo list owner' can manage collaborators to his todo list
+* 'Todo list owner' can assign/unassign collaborator to a todo item to be 'todo item assignee'
+* 'Todo item assignee' can change status of a todo item
 
 ---
 
-* Create user actions (login, register etc)
-* Update todo list implementations to belong to an user
+## Development action plans
+
+* Create a joining table between User and Todo to allow many-to-many relationship
+* Upon creation of a todo list, its owner auto become a collaborator
+* API end point for 'Todo list owner' to adding collaborator to a todo list
+* API end point for 'Todo list owner' to removing collaborator to a todo list
+* Update 'Todo Item' model to include assignee's user ID
+* API end point for 'Todo list owner' to adding assignee to a todo item
+* API end point for 'Todo list owner' to removing assignee to a todo item
+* API end point for 'Todo item assignee' updating todo item status
+* Deprecates existing generic 'update todo item' API end point
+
+---
+
+## Variations
+
+* Should user have the ability to agree to parttake a todo list, rather then be forcefully assigned to one?
+* Can a collaborator assign todo item to himself? How about exit an assignment?
+* What happens to the assigned todo items when a collaborator leaves the todo list?
+* Do want to allow multiple assignees to a todo item? how about in the future?
+
+(And plenty more...)
