@@ -47,6 +47,8 @@ module.exports = (app) => {
 
   app.post("/api/todos/:todoId/items", authenticateToken, todoItemsController.create);
   // app.put("/api/todos/:todoId/items/:todoItemId", authenticateToken, todoItemsController.update);
+  app.put("/api/todos/:todoId/items/:todoItemId", authenticateToken, todoItemsController.updateStatus);
+
   app.delete(
     "/api/todos/:todoId/items/:todoItemId", authenticateToken,
     todoItemsController.destroy

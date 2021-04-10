@@ -79,6 +79,31 @@ module.exports = {
     }
   },
 
+  async updateStatus(req, res) {
+    try {
+      const userId = req.user.id;
+      const todoId = req.params.todoId;
+      const todoItemid = req.params.todoItemId;
+      const complete = req.body.complete;
+
+      // TODO: verify the target todo item belongs to the provided todo list ID
+      // TODO: verify the current user is the assignee of this todo item
+
+      // ACT
+      const todoItem = await TodoItem.findByPk(todoItemId);
+      await todoItem.update({
+        complete,
+      });
+
+      return res.status(204).send();
+    } catch (err) {
+      return res.status(400).send({
+        success: false,
+        message: err.message,
+      });
+    }
+  },
+
   async destroy(req, res) {
     try {
       const userId = req.user.id;
