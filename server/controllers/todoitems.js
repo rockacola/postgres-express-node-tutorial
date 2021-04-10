@@ -34,6 +34,9 @@ module.exports = {
     }
   },
 
+  /**
+   * @deprecated
+   */
   async update(req, res) {
     try {
       const userId = req.user.id;

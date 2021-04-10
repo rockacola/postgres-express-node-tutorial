@@ -23,7 +23,6 @@
 ## Development action plans
 
 * API end point for 'Todo item assignee' updating todo item status
-* Deprecates existing generic 'update todo item' API end point
 
 ---
 
