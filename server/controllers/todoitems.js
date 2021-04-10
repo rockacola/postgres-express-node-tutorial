@@ -112,4 +112,58 @@ module.exports = {
       });
     }
   },
+
+  async setAssignee(req, res) {
+    try {
+      const ownerId = req.user.id;
+      const todoId = req.params.todoId;
+      const todoItemid = req.params.todoItemId;
+      const assigneeId = req.params.assigneeId;
+
+      // TODO: verify current user is the owner of the target todo list ID
+      // TODO: verify the target todo item belongs to the provided todo list ID
+      // TODO: verify the target assignee ID is a collaborator of this todo list
+      // TODO: verify whether the target assignee is already set to this todo item
+
+      // ACT
+      const todoItem = await TodoItem.findByPk(todoItemId);
+      await todoItem.update({
+        userId: assigneeId,
+      });
+
+      return res.status(204).send();
+    } catch (err) {
+      return res.status(400).send({
+        success: false,
+        message: err.message,
+      });
+    }
+  },
+
+  async unsetAssignee(req, res) {
+    try {
+      const ownerId = req.user.id;
+      const todoId = req.params.todoId;
+      const todoItemid = req.params.todoItemId;
+      const assigneeId = req.params.assigneeId;
+
+      // TODO: verify current user is the owner of the target todo list ID
+      // TODO: verify the target todo item belongs to the provided todo list ID
+      // TODO: verify the target assignee ID is a collaborator of this todo list
+      // TODO: verify whether the target assignee is already set to this todo item
+
+      // ACT
+      const todoItem = await TodoItem.findByPk(todoItemId);
+      await todoItem.update({
+        userId: null,
+      });
+
+      return res.status(204).send();
+    } catch (err) {
+      return res.status(400).send({
+        success: false,
+        message: err.message,
+      });
+    }
+  },
 };

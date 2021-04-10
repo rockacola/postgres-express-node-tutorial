@@ -22,8 +22,6 @@
 
 ## Development action plans
 
-* API end point for 'Todo list owner' to adding assignee to a todo item
-* API end point for 'Todo list owner' to removing assignee to a todo item
 * API end point for 'Todo item assignee' updating todo item status
 * Deprecates existing generic 'update todo item' API end point
 

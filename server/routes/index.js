@@ -57,6 +57,13 @@ module.exports = (app) => {
     })
   );
 
+  // Todo item assignee
+
+  app.post("/api/todos/:todoId/items/:todoItemId/assignee/:assigneeId", authenticateToken, todoItemsController.setAssignee);
+  app.delete("/api/todos/:todoId/items/:todoItemId/assignee/:assigneeId", authenticateToken, todoItemsController.unsetAssignee);
+
+  // User
+
   app.get("/api/users", usersController.list); // TODO: remove this action
   app.post("/api/users", usersController.register);
   app.post("/api/users/login", usersController.login);
