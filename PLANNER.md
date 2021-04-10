@@ -22,7 +22,6 @@
 
 ## Development action plans
 
-* Update 'Todo Item' model to include assignee's user ID
 * API end point for 'Todo list owner' to adding assignee to a todo item
 * API end point for 'Todo list owner' to removing assignee to a todo item
 * API end point for 'Todo item assignee' updating todo item status

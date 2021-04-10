@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const TodoItem = sequelize.define('TodoItem', {
+  const TodoItem = sequelize.define("TodoItem", {
     content: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -7,12 +7,16 @@ module.exports = (sequelize, DataTypes) => {
     complete: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
-    }
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
   });
   TodoItem.associate = (models) => {
     TodoItem.belongsTo(models.Todo, {
-      foreignKey: 'todoId',
-      onDelete: 'CASCADE',
+      foreignKey: "todoId",
+      onDelete: "CASCADE",
     });
   };
   return TodoItem;
