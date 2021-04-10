@@ -19,6 +19,12 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "userId",
       onDelete: "CASCADE",
     });
+
+    Todo.belongsToMany(models.User, {
+      through: "Todo_User",
+      as: "collaborators",
+      foreignKey: "todoId",
+    });
   };
   return Todo;
 };

@@ -1,5 +1,6 @@
 const Todo = require("../models").Todo;
 const TodoItem = require("../models").TodoItem;
+const User = require("../models").User;
 
 module.exports = {
   async create(req, res) {
@@ -34,6 +35,10 @@ module.exports = {
             model: TodoItem,
             as: "todoItems",
           },
+          {
+            model: User,
+            as: "collaborators",
+          },
         ],
         order: [
           ["createdAt", "DESC"],
@@ -60,6 +65,10 @@ module.exports = {
           {
             model: TodoItem,
             as: "todoItems",
+          },
+          {
+            model: User,
+            as: "collaborators",
           },
         ],
       });
