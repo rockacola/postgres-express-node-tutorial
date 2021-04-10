@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "doadmin",
-    "password": "rk3d5ohqu3jx51sa",
+    "password": "bicdj3y8mevhlcqa",
     "database": "defaultdb",
-    "host": "db-postgresql-sgp1-15886-do-user-1621459-0.b.db.ondigitalocean.com",
+    "host": "db-postgresql-sgp1-02823-do-user-1621459-0.b.db.ondigitalocean.com",
     "port": 25060,
     "dialect": "postgres",
     "dialectOptions": {
