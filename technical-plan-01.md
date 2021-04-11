@@ -4,17 +4,17 @@ For group task management (GTM) web app version 1.
 
 ## 1.1. Executive Summary
 
-After the protopype of GTM API design (previously referred as 'todo list app'), we want to push forward with a MVP to serve as our very first product release.
+After the prototype of GTM API design (previously referred a 'todo list app'), we want to push forward with an MVP to serve as our very first product release.
 
-This document is aimed to evaluate our solution design, technical needs to push the product out and how we will grow this project.
+This document evaluates our solution design, technical needs to push the product out, and how we will grow this project.
+
+The first deliverable is aimed at 4 weeks, where collaboration with other departments able to commence after the first 2 weeks.
 
 ## 1.2. Document Status
 
 * Status: **Draft**
 
-This document is currently under ongoing revision and refinements. Please do not use this document as basis of important decision makings.
-
-Please review 'history' of this document to see its revisions.
+This document is currently under ongoing revision and refinements. Please do not use this document as the basis of important decision makings.
 
 ## 1.3. Table of Content
 
@@ -54,31 +54,31 @@ Please review 'history' of this document to see its revisions.
 
 ## 1.4. Purpose of This Document
 
-This document will provide required summary on project direction and immediate action plan. It will also include outline of the roadmap after this deliverable.
+This document will provide the required summary of project direction and immediate action plan. It will also include an outline of the roadmap after this deliverable.
 
-When this document is finalised, it may serve as a blueprint allowing other teams to plan around it. For example: UX team shall able to work with front-end team now they able to visualize the content delivery strategy and formulate visual design solutions.
+When this document is finalized, it is to serve as a blueprint allowing other teams to plan around it. For example, UX team shall able to work with the front-end team now they able to visualize the content delivery strategy and formulate visual design solutions.
 
 ### 1.4.1. What this Document is not for
 
 * Purpose of this document is not to cater for visual design or serving as templating guide to the front-end development. 
-* There are no considerations for marketing nor commmunity growth strategy.
+* There are no considerations for marketing nor community growth strategy.
 
 ## 1.5. Project Goal Summary
 
-The immediate goal of this project is to able to deliver a MVP for GTM web app allowing anyone to join and use.
+The immediate goal of this project is to able to deliver an MVP for the GTM web app allowing anyone to join and use it.
 
-There are plenty of existing, polished products serving exact purpose (such as: Trello, Asana), and whist we still yet to come up with our distinctive value proposition, we want to have the base features in place and setup an excellent foundation for future, unknown feature growht.
+There are plenty of existing, polished products serving an exact purpose (such as Trello, Asana), and whilst we still yet to come up with our distinctive value proposition, we want to have the base features in place and set up an excellent foundation for future, unknown feature growth.
 
 ## 1.6. Problem Space Descriptions
 
-In this section of the document, we will discuss about our understanding and intepreatation of the problem we trying to solve.
+In this section of the document, we will discuss our understanding and interpretation of the problem we trying to solve.
 
 ### 1.6.1. User Stories
 
 Below is a list of user stories to address in this project:
 
-* *"Users want to create a managing group of tasks, or part time an existing task group."*
-* *"Onboarding process for guests should be minimal, allowing guests to become task participants without much overheads."*
+* *"Users want to create a managing group of tasks, or part takes an existing task group."*
+* *"Onboarding process for guests should be minimal, allowing guests to become task participants without many overheads."*
 * *"Users should easily track task progressions, be able to report or analysis if needed."*
 * *"The web app should have very high perceived speed, especially when it comes to mobile usages."*
 
@@ -90,7 +90,7 @@ Below is a list of use cases to cater, include ones already implemented during t
 
 * Guest able to create an account
 * Guest able to provide credentials and becomes an User
-* Guest able to submit lost password request
+* Guest able to submit a lost password request
 * Guest able to verify registration through email token
 * User able to change his password
 
@@ -98,15 +98,15 @@ Below is a list of use cases to cater, include ones already implemented during t
 
 * User able to create a task group
 * User able to modify description of a task group belongs to him
-* User able to delete a task group belongs to him
-* User able to add other user to his task group as 'collaobrator'
-* User able to remove existing collaborator from his task group
+* User able to delete a task group that belongs to him
+* User able to add another user to his task group as 'collaborator
+* User able to remove an existing collaborator from his task group
 * Collaborator able to see the tasks of the task group he part takes in
 * Collaborator able to remove himself from a task group
 
 #### 1.6.2.3. Task
 
-* User able to add task into his task group
+* User able to add a task into his task group
 * User able to modify description of a task belongs to him
 * User able to delete a task belongs to him
 * User able to set a collaborator to a task as 'assignee'
@@ -116,19 +116,19 @@ Below is a list of use cases to cater, include ones already implemented during t
 
 #### 1.6.2.4. Search
 
-* User able to search his task groups by common filters (such as: keywords, date, etc)
+* User able to search his task groups by common filters (such as keywords, date, etc)
 * User able to search his tasks by common filters
 * User able to search tasks he's assigned to by common filters
 
 ## 1.7. Solution Space Descriptions
 
-In this section of the document, we will discuss about our solution design and rationale behind it.
+In this section of the document, we will discuss our solution design and the rationale behind it.
 
 ### 1.7.1. Infrastructure Design
 
-For our immediate concern, we will be utilizing PaaS (such as Heroku) to speed development without having to worry for dev op tasks. Moving forward, we want to use IaaS (such as Amazon EC2) to manage our own instances where we have greater capabilities for customization and fine tuning.
+For our immediate concern, we will be utilizing PaaS (such as Heroku) to speed development without having to worry about dev op tasks. Moving forward, we want to use IaaS (such as Amazon EC2) to manage our own instances where we have greater capabilities for customization and fine-tuning.
 
-Disregard of destination, we want to ensure infrastructure setup can be programaticed, where we will be able to reproduce and replicate instances as needed.
+Disregard of destination, we want to ensure infrastructure setup can be done programmatically, where we will be able to reproduce and replicate instances as needed.
 
 In this project, we will require 2 types of instance:
 
@@ -140,7 +140,7 @@ In this project, we will require 2 types of instance:
 * User
   * Refers to users who are using our platform
   * Must have an email address
-  * In order to use majority of the product, user has to verify his email address
+  * In order to use the majority of the product, the user has to verify his email address
   * User can have 0 to many task groups
 * Task Group
   * Belongs to exactly 1 user
@@ -148,21 +148,21 @@ In this project, we will require 2 types of instance:
   * Assigned to 0 or 1 user
 * Task Group Owner
   * A specialized user
-  * Refers to owner of a task group
-  * Can manage users in a task group to be 'collaboators'
+  * Refers to the owner of a task group
+  * Can manage users in a task group to be 'collaborators
   * Can manage users in a task to be 'assignee'
 * Task Group Collaborator
   * A specialized user
   * Refers to participants of a task group
-  * Can participate the task group he's been invited to
+  * Can participate in the task group he's been invited to
 * Task Assignee
   * A specialized user
   * Refers to participants of a task been assigned to by the task group owner
-  * Can participate the task he's been invited to
+  * Can participate in the task he's been invited to
 
 #### 1.7.2.1. Data Structure
 
-Below is a defintion of data structure in pseudo code:
+Below is a definition of data structure in pseudo-code:
 
 * Users
 
@@ -190,7 +190,7 @@ Below is a defintion of data structure in pseudo code:
 
 * TaskGroup_Users
 
-Joining table for establishing many-to-many relationship between users and task groups.
+Joining table for establishing a many-to-many relationship between users and task groups.
 
 ```txt
   id          INTEGER PK
@@ -202,22 +202,22 @@ Joining table for establishing many-to-many relationship between users and task 
 
 * Using version number from the start
   * Example: `https://api.product.io/v1/`
-* Environment variants shall use prefixes, example:
+* Environment variants shall use prefixes, for example:
   * For stage environment: `https://stage-api.product.io/v1/`
   * For nightly release: `https://nightly-api.product.io/v1/`
-  * For project specific releases: `https://atlas-api.product.io/v1/`
+  * For project-specific releases: `https://atlas-api.product.io/v1/`
     * `atlas` been the code name of a certain release
 * API request
   * To follow RESTful API guideline
-  * Well polished, generated API doc
+  * Well-polished, generated API user guide
   * Support for global params for common interfacing needs
-    * `format`: default to JSON, but able to provide other formats for different purpose.
+    * `format`: default to JSON, but able to provide other formats for different purposes.
 * API response
   * When there's data in response, use common data wrapper
-    * This will provide greater forward compaitablity
-  * Logical errors shoudl all have same format
-    * Error message is designed to be exposed to public, hence should consider level of details
-    * An erorr reference value shall be provdied for troubleshoot purpose.
+    * This will provide greater forward compatibility
+  * Logical errors should all have the same format
+    * Error message is designed to be exposed to the public, hence should consider the level of details
+    * An error reference value shall be provided for troubleshooting purposes.
 
 ### 1.7.4. API Definition
 
@@ -232,9 +232,6 @@ Joining table for establishing many-to-many relationship between users and task 
 
 * `GET /users/me`
   * Obtain user information of the authorized account
-
-
-
 
 #### 1.7.4.3. Task Group
 
@@ -268,8 +265,18 @@ Joining table for establishing many-to-many relationship between users and task 
 
 ### 1.7.5. 8.4 Project Milestones
 
-* Target 4 weeks for this delivery cycle
-* Enough should be structured for the first 2 weeks, other departments should be able to delay on this from week 3 onward.
+This project is targeted to complete with 4 weeks of development effort
+
+* First 2 weeks
+  * Have a production-ready infrastructure in place, such as:
+    * Server environment
+    * Database environment
+  * Complete API user guide
+  * Complete developers' integration test suites
+  * Setup mock API endpoints allowing consuming test (by front-end team)
+* Second 2 weeks
+  * Revise and replicate the product infrastructure as a stage environment
+  * Complete development implementation
 
 ## 1.8. Roadmap
 
@@ -277,17 +284,16 @@ In this section of the document, we will define our forward compatibility consid
 
 ### 1.8.1. Version 1.1
 
-* Uncover uncertainty
-* Revision control
-  * soft delete should be supeceded
-  * some createdAt and updatedAt metadata no longer required
-  * revision data should be stored in separate data storage
+* Further user requirement evaluation
+* Add version control to user generated content
 
 ### 1.8.2. Version 1.2
 
+* Further user requirement evaluation
+* Performance benchmark and evaluation
 * Separate concern of 'account' and 'user', allowing OAuth or other types of login methods
-* Discourage user registration with weak password
-* Allowing users to comment a task
+* Discourage user registration with a weak password
+* Allowing users to comment on a task
 
 ### 1.8.3. Unversioned
 
