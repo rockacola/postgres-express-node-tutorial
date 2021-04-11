@@ -4,9 +4,9 @@ For group task management (GTM) web app version 1.
 
 ## 1.1. Executive Summary
 
-After the protopype of GTM API design (base of a todo list app demo), we want to push forward with a MVP to serve as our very first public product release as a team collaboration tool.
+After the protopype of GTM API design (previously referred as 'todo list app'), we want to push forward with a MVP to serve as our very first product release.
 
-This document will provide technical summary base off current implementation, and proposed technical solution deriving from it.
+This document is aimed to evaluate our solution design, technical needs to push the product out and how we will grow this project.
 
 ## 1.2. Document Status
 
@@ -38,32 +38,31 @@ Please review 'history' of this document to see its revisions.
       - [Table Schema](#table-schema)
     - [1.7.3. API Structure and Definitions](#173-api-structure-and-definitions)
     - [1.7.4. 8.4 Project Milestones](#174-84-project-milestones)
-  - [1.8. Future (TBD)](#18-future-tbd)
+  - [1.8. Roadmap](#18-roadmap)
+    - [Version 1.1](#version-11)
+    - [Version 1.2](#version-12)
+    - [Unversioned](#unversioned)
+      - [Infrastructure](#infrastructure)
   - [1.9. Appendix](#19-appendix)
     - [1.9.1. Roles](#191-roles)
     - [1.9.2. Terminologies](#192-terminologies)
 
 ## 1.4. Purpose of This Document
 
-This document will provide required summary on project direction and immediate action plan.
+This document will provide required summary on project direction and immediate action plan. It will also include outline of the roadmap after this deliverable.
 
-When this document is finalised, it may serve as a blueprint allowing other departs to proceed their planning on top of this. For examples:
-
-* Front end team and UX team shall able to visualize the content delivery strategy and formulate its design solution.
+When this document is finalised, it may serve as a blueprint allowing other teams to plan around it. For example: UX team shall able to work with front-end team now they able to visualize the content delivery strategy and formulate visual design solutions.
 
 ### 1.4.1. What this Document is not for
 
-Purpose of this document is not to cater for visual design or serving as templating guide to the front end development.
-
-There are no consideration for marketing nor commmunity growth strategy from here.
-
-This is not a document to provide nor track actionable development tasks.
+* Purpose of this document is not to cater for visual design or serving as templating guide to the front-end development. 
+* There are no considerations for marketing nor commmunity growth strategy.
 
 ## 1.5. Project Goal Summary
 
 The immediate goal of this project is to able to deliver a MVP for GTM web app allowing anyone to join and use.
 
-There are plenty of existing, polished products serving exact purpose, and whist we still yet to come up with our distinctive value proposition, we want to have the base functionality delivered and have good API foundation in place.
+There are plenty of existing, polished products serving exact purpose (such as: Trello, Asana), and whist we still yet to come up with our distinctive value proposition, we want to have the base features in place and setup an excellent foundation for future, unknown feature growht.
 
 ## 1.6. Problem Space Descriptions
 
@@ -71,16 +70,16 @@ In this section of the document, we will discuss about our understanding and int
 
 ### 1.6.1. User Stories
 
-Below is a comprehensive list of user stories defined to cover concern of this document.
+Below is a list of user stories to address in this project:
 
 * *"Users want to create a managing group of tasks, or part time an existing task group."*
 * *"Onboarding process for guests should be minimal, allowing guests to become task participants without much overheads."*
 * *"Users should easily track task progressions, be able to report or analysis if needed."*
-* *"The web app should have very high perceived speed"*
+* *"The web app should have very high perceived speed, especially when it comes to mobile usages."*
 
 ### 1.6.2. Use Cases
 
-Since this is the first document, it will contain the use cases from the prototype.
+Below is a list of use cases to cater, include ones already implemented during the prototype:
 
 #### Account
 
@@ -122,14 +121,14 @@ In this section of the document, we will discuss about our solution design and r
 
 ### 1.7.1. Infrastructure Design
 
-* Cloud VPS with docker
-* Microservice infrastructor, breaking up each components to individual virtual server
-  * API server
-  * Database
-  * File storage
-  * Cache
-* Using Ansible from mostly-automatic server setup
-* Analytic tools like Sentry for debugability
+For our immediate concern, we will be utilizing PaaS (such as Heroku) to speed development without having to worry for dev op tasks. Moving forward, we want to use IaaS (such as Amazon EC2) to manage our own instances where we have greater capabilities for customization and fine tuning.
+
+Disregard of destination, we want to ensure infrastructure setup can be programaticed, where we will be able to reproduce and replicate instances as needed.
+
+In this project, we will require 2 types of instance:
+
+* API server
+* Database
 
 ### 1.7.2. Data Model
 
@@ -171,16 +170,30 @@ In this section of the document, we will discuss about our solution design and r
 * Target 4 weeks for this delivery cycle
 * Enough should be structured for the first 2 weeks, other departments should be able to delay on this from week 3 onward.
 
-## 1.8. Future (TBD)
+## 1.8. Roadmap
 
-In this section of the document, we will decide our forward compatibility consideration for ever changing software space.
+In this section of the document, we will define our forward compatibility consideration
 
+### Version 1.1
+
+* Uncover uncertainty
 * Revision control
   * soft delete should be supeceded
   * some createdAt and updatedAt metadata no longer required
   * revision data should be stored in separate data storage
 
-* Uncover uncertainty
+### Version 1.2
+
+* Separate concern of 'account' and 'user', allowing OAuth or other types of login methods
+
+### Unversioned
+
+#### Infrastructure
+
+* Define log store and analyze
+* Define data store instance for blob file storage
+* Define cache instance
+* Define load balance instance
 
 ## 1.9. Appendix
 
