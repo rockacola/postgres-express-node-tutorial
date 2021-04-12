@@ -210,17 +210,8 @@ Joining table for establishing a many-to-many relationship between users and tas
   * For nightly release: `https://nightly-api.product.io/v1/`
   * For project-specific releases: `https://atlas-api.product.io/v1/`
     * `atlas` been the code name of a certain release
-* API request
-  * To follow RESTful API guideline
-  * Publish well-polished, generated API user guide
-  * Support for global params for common interfacing needs
-    * `format`: default to JSON, but able to provide other formats for different purposes.
-* API response
-  * When there's data in response, use common data wrapper
-    * This will provide greater forward compatibility
-  * Logical errors should all have the same format
-    * Error message is designed to be exposed to the public, hence should consider the level of details
-    * An error reference value shall be provided for troubleshooting purposes.
+* API design to follow OpenAPI specification 3.1
+* Generated API documentation using `swagger-codegen`
 
 ### 1.7.4. API Definition
 
