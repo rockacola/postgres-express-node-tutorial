@@ -26,13 +26,13 @@ This document is currently under ongoing revision and refinements. Please do not
 
 ## 1.4. Purpose of This Document
 
-This document will provide the required summary of project direction and immediate action plan. It will also include an outline of the roadmap after this deliverable.
+This document will provide the required summary of product direction and immediate action plan. It will also include an outline of the roadmap after this deliverable.
 
 When this document is finalized, it is to serve as a blueprint allowing other teams to plan around it. For example, UX team shall able to work with the front-end team now they able to visualize the content delivery strategy and formulate visual design solutions.
 
 ### 1.4.1. What this Document is not for
 
-* Purpose of this document is not to cater for visual design or serving as templating guide to the front-end development. 
+* Purpose of this document is not to cater for visual design or serving as templating guide to the front-end development.
 * There are no considerations for marketing nor community growth strategy.
 
 ## 1.6. Problem Space Descriptions
@@ -41,14 +41,12 @@ In this section, we will discuss our understanding and interpretation of the pro
 
 ### 1.6.1. User Stories
 
-Below is a list of user stories to address in this project:
+Below is a list of user stories to consider while improving this product:
 
 * *"Users able to collaborate and track for task completions"*
 * *"Onboarding process for guests should be minimal, allowing guests to become task participants without many overheads."*
 * *"Users should easily track task progressions, be able to report or analysis if needed."*
 * *"The web app should have very high perceived speed, especially when it comes to mobile usages."*
-
-SEE USE CASES
 
 ## 1.7. Solution Space Descriptions
 
