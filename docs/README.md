@@ -34,7 +34,3 @@ Project management documents.
 | GMT Version 1.1            | [`/docs/project-plans/gmt-1-1.md`](/docs/project-plans/gmt-1-1.md)     |
 | GMT Version 1.2            | [`/docs/project-plans/gmt-1-2.md`](/docs/project-plans/gmt-1-2.md)     |
 | Unplanned Project Features | [`/docs/project-plans/unplanned.md`](/docs/project-plans/unplanned.md) |
-
-
-
-| [API Definition](/docs/tech-docs/api-definition.md) |
