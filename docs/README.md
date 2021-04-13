@@ -8,7 +8,7 @@ High-level business plan documentations to provide all technical design needs.
 
 | Name                      | Path                                                                                     |
 | ------------------------- | ---------------------------------------------------------------------------------------- |
-| Product Technical Planner | [`/docs/business-planners/technical-plan.md`](/docs/business-planners/technical-plan.md) |
+| Product Technical Planner | [`/docs/business-plans/technical-plan.md`](/docs/business-plans/technical-plan.md) |
 
 ## Technical Plans
 
@@ -22,7 +22,7 @@ Low-level production-focused documentation for developers.
 | API Style Guide           | [`/docs/tech-docs/api-style-guide.md`](/docs/tech-docs/api-style-guide.md)                     |
 | Node.js Coding Standards  | [`/docs/tech-docs/nodejs-coding-standards.md`](/docs/tech-docs/nodejs-coding-standards.md)     |
 | Postgres Coding Standards | [`/docs/tech-docs/postgres-coding-standards.md`](/docs/tech-docs/postgres-coding-standards.md) |
-| Contribution Guidelines   | [`/docs/tech-docs/contributing-guidelines.md`](/docs/tech-docs/contributing-guidelines.md)     |
+| Contribution Guidelines   | [`/docs/tech-docs/contribution-guidelines.md`](/docs/tech-docs/contribution-guidelines.md)     |
 
 ## Project Plans
 
